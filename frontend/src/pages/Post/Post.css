@@ -1,0 +1,55 @@
+/* Assuming this is the CSS file for the Post component */
+/* Post.css */
+
+form {
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  input {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  input[type="file"] {
+    margin: 5px;
+    padding: 10px;
+  }
+  
+  button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .imagesContainer {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #1b1b1b;
+    justify-content: center;
+}
+.imageContainer {
+    justify-content: center;
+    align-items: center;
+    width: 900px;
+    margin: 10rem auto; /* Center the container horizontally */
+    background-color: #222222;
+}
+.images { 
+    height: 700px;
+    width: 600px;
+    border-radius: 20px;
+    margin: 150px;
+}
+
+font{
+    color: wheat;
+}

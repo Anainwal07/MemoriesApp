@@ -1,0 +1,15 @@
+.imagesContainer {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.imageContainer {
+    width: 250px;
+    border-radius: 10px;
+}
+.images { 
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+    padding: 10px;
+}
