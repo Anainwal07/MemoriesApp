@@ -23,6 +23,14 @@ const Login = () => {
             const token = res.data.token ; 
             localStorage.setItem("token" , token) ; 
     
+            const name = res.data.user.name ;
+            console.log(name) ; 
+            localStorage.setItem("currentUser" , name) ; 
+
+            const CurrentUsername = res.data.user.username ; 
+            console.log(CurrentUsername); 
+            localStorage.setItem("CurrentUsername" , CurrentUsername) ; 
+            
             navigate("/dashboard") ;
         }).catch((err) => {
             console.log(err.response.data.message) ;

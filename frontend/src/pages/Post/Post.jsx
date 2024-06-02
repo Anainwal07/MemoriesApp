@@ -12,13 +12,12 @@ const  Post = () => {
   const [picturePath, setPicturePath] = useState();
   const [images, setImages] = useState([]);
   const locate = useLocation() ; 
-
-  // const { user } = useContext(UserContext) ; 
-  // console.log(user) ; 
+  const [currentUser , setCurrentUser] = useState('') ; 
 
   const route = locate.pathname.split('/')[1] ; 
 
   const handleSubmit = async (e) => {
+
     e.preventDefault();
     try {
       const formData = new FormData();
@@ -76,11 +75,16 @@ const  Post = () => {
   };
   
   useEffect(() => {
+    const userFromLocalStorage = localStorage.getItem('CurrentUsername'); 
+    setCurrentUser(userFromLocalStorage);
+
     fetchImages();
   }, [locate.pathname]);
 
   return (
-    <div style={{justifyContent: 'center' , alignContent : 'center'}}>
+    <div>
+      <div className='formContainer'>
+      <h1 style={{fontFamily: 'sans-serif' , marginRight: 75}}>Whats on your mind </h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -100,16 +104,21 @@ const  Post = () => {
         accept='file'
         onChange={(e) => setPicturePath(e.target.files[0])} // Updated to capture file data
       />
-        <button type="submit">Upload Image</button>
+        <button style={{backgroundColor : '#1b1b1b' , fontWeight : 'bolder', fontFamily: 'sans-serif'}} type="submit">Post</button>
       </form>
+      </div>
+
       <div className='imagesContainer'>
+        
         {images.length > 0 ? 
             images.map((image , index) => (
             <div className='imageContainer' key={index}>
-                <p><span style={{ fontWeight: 'bold' }}>Name : </span>{image.username}</p>
-                <button onClick={() => {
+              <div style={{justifyContent : 'space-between' , display: 'flex'}}>
+              <p><span style={{ fontWeight: 'bold' }}>Name : </span>{image.username}</p>
+              {currentUser === image.username && <button onClick={() => {
                   handleDelete(image._id) ; 
-                }}>Delete Post</button>
+                }}>Delete Post</button>}
+              </div>
                 <img className='images' src={`${BackendURL}/assets/${image.picturePath}`} alt={image.name} />
                 <p><span style={{ fontWeight: 'bold' }}>Location:</span> {image.location}</p>
                 <p><span style={{ fontWeight: 'bold' }}>Description:</span> {image.description}</p>

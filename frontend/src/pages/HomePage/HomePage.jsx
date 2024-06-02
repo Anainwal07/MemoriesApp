@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
   const navigate = useNavigate() ; 
+  const name = localStorage.getItem('name') ;  
   return (
     <div>
       <nav className="navbar">
@@ -12,13 +13,18 @@ const HomePage = () => {
           <h1>MemoriesApp</h1>
         </div>
         <div className="nav-links">
-          <a>Home</a>
-          <a href="#">About</a>
+          <span onClick={() => {
+            navigate('/dashboard') ; 
+          }}>Home</span>
+          <span>About</span>
         </div>
         <div className="profile">
-          <span onClick={() => {
+          <span style={{}} onClick={() => {
             navigate("/profile")
-          }}>Username</span>
+          }}>{name}</span>
+          <button onClick={ () => {
+            navigate("/") ; 
+          }}>Logout</button>
         </div>
       </nav>
       <Post />
