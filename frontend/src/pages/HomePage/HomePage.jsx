@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
   const navigate = useNavigate() ; 
-  const name = localStorage.getItem('name') ;  
+  const name = localStorage.getItem('currentUser') ;  
   return (
     <div>
       <nav className="navbar">

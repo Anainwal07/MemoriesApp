@@ -9,7 +9,7 @@ import morgan from "morgan";
 import path from "path" ;
 import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
-import { SignupControllers } from "./contollers/authcontrollers.js";
+import { SignupControllers } from "./contollers/authControllers.js";
 import { AddPost } from "./contollers/postControllers.js";
 import checktoken from "./utils/checktoken.js";
 
@@ -39,8 +39,8 @@ const storage = multer.diskStorage({
 const upload = multer({storage}) ;
 
 // Routes with files 
-app.post("/auth/signup" , upload.single("picture"), checktoken , SignupControllers) ;
-app.post("/post/upload" ,checktoken , upload.single("picturePath"), AddPost) ; //validate token later
+app.post("/auth/signup" , upload.single("picturePath") , SignupControllers) ;
+app.post("/post/upload" ,checktoken , upload.single("picturePath"), AddPost) ; 
 
 
 app.use("/auth" , authRoutes) ; 

@@ -38,7 +38,11 @@ export const LoginControllers = async(req , res) => {
 
 export const SignupControllers = async(req , res) => {
     try {
-        const {name , username , password , picturePath} =  req.body ;
+        const {name , username , password } =  req.body ;
+
+        const picturePath = req.file.filename ;  
+        
+        console.log(picturePath) ; 
 
         if(!name || !username || !password){
             return res.status(400).json({message : "Provide all necessary fields"}); 
